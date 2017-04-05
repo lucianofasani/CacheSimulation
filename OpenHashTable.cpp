@@ -7,7 +7,7 @@
 #include "OpenHashTable.h"
 
 OpenHashTable::OpenHashTable(){
-  m_size = 0;
+  m_size = 256;//for 2 way set associative
   m_hashTb = new DoubleLinkedList<int>[m_size];
 }
 

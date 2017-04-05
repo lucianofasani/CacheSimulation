@@ -15,7 +15,7 @@ DoubleLinkedList<T>::DoubleLinkedList(){
 template <typename T>
 DoubleLinkedList<T>::~DoubleLinkedList(){
 	while(m_front != nullptr){
-		deletenode(m_front->getValue());
+		deletenode(m_front->getTag());
 	}
 }
 
@@ -39,7 +39,7 @@ template <typename T>
 void DoubleLinkedList<T>::insert(T value){
 	if(isEmpty()){
 		m_front = new Node<T>();
-		m_front -> setValue(value);
+		m_front -> setTag(value);
 		m_back = m_front;
 		m_size++;
 	}
@@ -47,7 +47,7 @@ void DoubleLinkedList<T>::insert(T value){
 		Node<T>* newFront = new Node<T>();
 		Node<T>* tempFront = m_front;
 		newFront -> setNext(tempFront);
-		newFront -> setValue(value);
+		newFront -> setTag(value);
 		newFront -> setPrevious(nullptr);
 		m_front = newFront;
 		m_back = tempFront;
@@ -68,7 +68,7 @@ void DoubleLinkedList<T>::print(Node<T>* traverse) const{
 	}
 
 	else{
-		std::cout << traverse->getValue() << " ";
+		std::cout << traverse->getTag() << " ";
 		if(traverse->getNext() != nullptr){
 			print(traverse->getNext());
 		}
@@ -86,13 +86,13 @@ void DoubleLinkedList<T>::deletenode(T value, Node<T>* traverse){
 		return;
 	}
 	else{
-		if(traverse->getValue() != value && traverse->getNext() != nullptr){
+		if(traverse->getTag() != value && traverse->getNext() != nullptr){
 			deletenode(value, traverse->getNext());
 		}
-		else if(traverse->getNext() == nullptr && traverse->getValue() != value){
+		else if(traverse->getNext() == nullptr && traverse->getTag() != value){
 			std::cout << "Couldn't remove value \n";
 		}
-		else if(traverse->getValue() == value){
+		else if(traverse->getTag() == value){
 			Node<T>* nextPtr = traverse->getNext();
 			Node<T>* prevPtr = traverse->getPrevious();
 
@@ -165,11 +165,11 @@ bool DoubleLinkedList<T>::find(T value){
 	else{
 		Node<T>* traverse = m_front;
 		int i = 1;
-		while(traverse->getValue() != value && i < size()){
+		while(traverse->getTag() != value && i < size()){
 			traverse = traverse->getNext();
 			i++;
 		}
-		if(traverse->getValue() == value){
+		if(traverse->getTag() == value){
 			return(true);
 		}
 		else{

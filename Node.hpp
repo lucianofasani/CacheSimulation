@@ -8,17 +8,28 @@ template <typename T>
 Node<T>::Node(){
 	m_next = nullptr;
 	m_previous = nullptr;
-	m_value = T();
+	m_tag = T();
+	m_valid = false;
 }
 
 template <typename T>
-T Node<T>::getValue() const{
-	return(m_value);
+T Node<T>::getTag() const{
+	return(m_tag);
 }
 
 template <typename T>
-void Node<T>::setValue(T value){
-	m_value = value;
+void Node<T>::setTag(T tag){
+	m_tag = tag;
+}
+
+template <typename T>
+bool Node<T>::getState() const{
+	return(m_valid);
+}
+
+template <typename T>
+void Node<T>::setState(bool state){
+	m_valid = state;
 }
 
 template <typename T>

@@ -6,10 +6,13 @@
 */
 #ifndef NODE_H
 #define NODE_H
+#include <string>
+
 template <typename T>
 class Node{
 	private:
-	T m_value;
+	T m_tag;
+	bool m_valid;
 	Node<T>* m_previous;
 	Node<T>* m_next;
 
@@ -23,17 +26,31 @@ class Node{
 
 	/**
 	*  @pre Node must be created
-	*  @post sets value of m_value within a Node
+	*  @post sets value of tag within a Node
 	*  @return None
 	*/
-	void setValue(T value);
+	void setTag(T tag);
 
 	/**
 	*  @pre Node must be created
-	*  @post used to get the value inside of a Node
+	*  @post used to get the tag inside of a Node
 	*  @return an integer
 	*/
-	T getValue() const;
+	T getTag() const;
+
+	/**
+	*  @pre Node must be created
+	*  @post sets value of tag within a Node
+	*  @return None
+	*/
+	void setState(bool state);
+
+	/**
+	*  @pre Node must be created
+	*  @post used to get the tag inside of a Node
+	*  @return an integer
+	*/
+	bool getState() const;
 
 	/**
 	*  @pre Node must be created
