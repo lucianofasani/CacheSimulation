@@ -1,11 +1,11 @@
-CacheSimulation: main.o OpenHashTable.o
-	g++ -g -std=c++11 -Wall main.o OpenHashTable.o -o CacheSimulation
+CacheSimulation: main.o Cache.o
+	g++ -g -std=c++11 -Wall main.o Cache.o -o CacheSimulation
 
-main.o: main.cpp Node.hpp Node.h DoubleLinkedList.h DoubleLinkedList.hpp OpenHashTable.h OpenHashTable.cpp
+main.o: main.cpp
 	g++ -g -std=c++11 -Wall -c main.cpp
 
-OpenHashTable.o: OpenHashTable.h OpenHashTable.cpp DoubleLinkedList.h DoubleLinkedList.hpp
-	g++ -g -std=c++11 -Wall -c OpenHashTable.cpp
+Cache.o: Cache.h Cache.cpp
+	g++ -g -std=c++11 -Wall -c Cache.cpp
 
 clean:
 	rm *.o CacheSimulation

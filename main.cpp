@@ -4,34 +4,24 @@
 #include <iostream>
 int main () {
   FILE * pFile;
-  long lSize;
-  char * buffer;
   size_t result;
+  uint32_t address;
+  uint32_t numOfAddresses = 0;
 
-  pFile = fopen ( "/home/denaedouglas/Documents/EECS_645/AddressTrace_LastIndex.bin" , "rb" );
+
+  pFile = fopen ( "/home/denaedouglas/Documents/EECS_645/AddressTrace_RandomIndex.bin" , "rb" );
   if (pFile==NULL) {fputs ("File error",stderr); exit (1);}
 
-  // obtain file size:
-  fseek (pFile , 0 , SEEK_END);
-  lSize = ftell (pFile);
-  rewind (pFile);
+  std::cout << "Reading in addresses -- 1 by 1...\n";
+  while(result != 0){
+    result = fread (&address,4,1,pFile);
+    numOfAddresses++;
+  }
 
-	std::cout << "Size of file: " << lSize << "\n";
+  std::cout << "Number of Addresses: " << numOfAddresses << "\n";
 
-  // allocate memory to contain the whole file:
-  buffer = (char*) malloc (sizeof(char)*lSize);
-  if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
-
-  // copy the file into the buffer:
-  result = fread (buffer,4,lSize,pFile);
-
-	//this line will show how many addresses were read into memory
-	std::cout << "Number of Addresses: " << result << "\n";
-  /* the whole file is now loaded in the memory buffer. */
-
-  // terminate
-  fclose (pFile);
-  free (buffer);
+  int cache = 15;
+  int cacheNbr = (1 << cache);
+  std::cout << "Size of Cache: " << cacheNbr;
   return 0;
 }
-
