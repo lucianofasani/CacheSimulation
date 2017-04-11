@@ -6,6 +6,6 @@ int main () {
 
   //Convert a binary number to decimal
 
-
   return 0;
+
 }

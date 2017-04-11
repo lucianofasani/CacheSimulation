@@ -31,3 +31,21 @@ void Cache::cacheSim(){
 void Cache::replacement(){
 
 }
+
+long Cache::binaryConversion(long num){
+  long binaryNum;
+  long decimalNum = 0;
+  long rem;
+  long base = 1;
+
+  binaryNum = num;
+
+  while(num > 0){
+    rem = num % 10;
+    decimalNum = decimalNum + rem * base;
+    base = base * 2;
+    num = num / 10;
+  }
+
+  return(decimalNum);
+}
