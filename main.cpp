@@ -4,10 +4,6 @@
 #include <iostream>
 int main () {
 
-  //Convert a binary number to decimal
-
-  long bin, dec = 0, rem, num, base = 1;
-
 
   return 0;
 
