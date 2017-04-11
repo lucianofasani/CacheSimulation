@@ -9,7 +9,7 @@
 
 #define ADDRESS_SIZE 32
 
-#define CACHEASSOC_EXP 1
+#define CACHEASSOC_EXP 0
 #define CACHEASSOC (1 << CACHEASSOC_EXP)
 
 #define BLOCKSIZE_EXP 6
@@ -31,9 +31,8 @@ struct Block{
 
 class Cache{
 private:
-  int m_hits;
-  int m_misses;
-  void cacheSim();
+  double m_hits;
+  double m_misses;
   void replacement();
 
 
@@ -41,5 +40,7 @@ public:
   Block m_cache[LINES_NBR][CACHEASSOC];
   Cache();
   ~Cache();
+  void cacheSim();
+  long binaryConversion(long num);
 };
 #endif
