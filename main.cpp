@@ -4,8 +4,6 @@
 #include <iostream>
 int main () {
 
-<<<<<<< HEAD
-=======
   //Convert a binary number to decimal
 
   long bin, dec = 0, rem, num, base = 1;
@@ -23,5 +21,5 @@ int main () {
   std::cout << "The decimal equivalent of " << bin << " : " << dec << "\n";
 
   return 0;
->>>>>>> Denae
+
 }
