@@ -3,25 +3,23 @@
 #include <stdlib.h>
 #include <iostream>
 int main () {
-  FILE * pFile;
-  size_t result;
-  uint32_t address;
-  uint32_t numOfAddresses = 0;
 
+  
 
-  pFile = fopen ( "/home/denaedouglas/Documents/EECS_645/AddressTrace_RandomIndex.bin" , "rb" );
-  if (pFile==NULL) {fputs ("File error",stderr); exit (1);}
-
-  std::cout << "Reading in addresses -- 1 by 1...\n";
-  while(result != 0){
-    result = fread (&address,4,1,pFile);
-    numOfAddresses++;
-  }
-
-  std::cout << "Number of Addresses: " << numOfAddresses << "\n";
-
-  int cache = 15;
-  int cacheNbr = (1 << cache);
-  std::cout << "Size of Cache: " << cacheNbr;
-  return 0;
+    //Convert a binary number to decimal
+    
+    long bin, dec = 0, rem, num, base = 1;
+ 
+    std::cout << "Enter the binary number(1s and 0s) : ";
+    std::cin >> num;
+    bin = num;
+    while (num > 0)
+    {
+        rem = num % 10;
+        dec = dec + rem * base;
+        base = base * 2;
+        num = num / 10;
+    }
+    std::cout << "The decimal equivalent of " << bin << " : " << dec << "\n";
+    
 }
