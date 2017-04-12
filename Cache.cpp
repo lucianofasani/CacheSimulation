@@ -44,9 +44,6 @@ void Cache::cacheSim(){
           break;
         }
         else{
-          /*if(CACHEASSOC_EXP == 0){
-            m_misses++;
-          }*/
           if(i == CACHEASSOC-1){//if the last block's tag != TAG log a miss
             m_misses++;
             replacement();
@@ -69,7 +66,6 @@ void Cache::cacheSim(){
   std::cout << "Hits/Entries: " << (m_hits/counter) << "\n";
 }
 
-//call this if associativity != 0 and neithr block has a matching tag but both have something in them
 void Cache::replacement(){
   if(CACHEASSOC_EXP == 0){
     m_cache[ALINE][0].m_tag = ATAG;
