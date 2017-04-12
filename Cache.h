@@ -3,13 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <math.h>
 
+//definitions provided by Professor Gary J. Minden
 #define CACHE_SIZE_EXP 15
 #define CACHE_SIZE (1 << 15)
 
 #define ADDRESS_SIZE 32
 
-#define CACHEASSOC_EXP 0
+#define CACHEASSOC_EXP 1
 #define CACHEASSOC (1 << CACHEASSOC_EXP)
 
 #define BLOCKSIZE_EXP 6
@@ -26,11 +28,13 @@
 
 struct Block{
   bool m_valid;
-  int m_tag;
+  uint32_t m_tag;
 };
 
 class Cache{
 private:
+  uint32_t ALINE;
+  uint32_t ATAG;
   double m_hits;
   double m_misses;
   void replacement();
@@ -41,6 +45,5 @@ public:
   Cache();
   ~Cache();
   void cacheSim();
-  long binaryConversion(long num);
 };
 #endif
