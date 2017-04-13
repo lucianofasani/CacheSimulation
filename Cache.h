@@ -1,3 +1,10 @@
+/**
+*	@file : Cache.h
+*	@author :  Denae Douglas, Keshawn Triplett, Luciano Fasani
+* @author : Professor Gary J. Minden provided definitions for cache initialization
+*	@date : 2017.04.11
+*	Purpose: Cache class declarations
+*/
 #ifndef CACHE_H
 #define CACHE_H
 #include <stdio.h>
@@ -37,6 +44,11 @@ private:
   uint32_t ATAG;
   double m_hits;
   double m_misses;
+  /**
+	*  @pre None
+	*  @post randomly replaces a block
+	*  @return None
+	*/
   void replacement();
 
 
@@ -44,6 +56,11 @@ public:
   Block m_cache[LINES_NBR][CACHEASSOC];
   Cache();
   ~Cache();
+  /**
+  *  @pre None
+  *  @post runs the cache simulation
+  *  @return None
+  */
   void cacheSim();
 };
 #endif

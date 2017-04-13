@@ -1,3 +1,9 @@
+/**
+*	@file : Cache.cpp
+*	@author :  Denae Douglas, Keshawn Triplett, Luciano Fasani
+*	@date : 2017.04.11
+*	Purpose: Cache class implementation
+*/
 #include "Cache.h"
 Cache::Cache(){
 
@@ -12,7 +18,6 @@ void Cache::cacheSim(){
   size_t result = 1;
   uint32_t address;
   double counter = 0;
-  int iterations = 0;
 
   pFile = fopen ( "/home/denaedouglas/Documents/EECS_645/AddressTrace_LastIndex.bin" , "rb" );
   if (pFile==NULL) {fputs ("File error",stderr); exit (1);}
@@ -37,7 +42,6 @@ void Cache::cacheSim(){
     ATAG = address;
 
     for(int i = 0; i < CACHEASSOC; i++){
-      iterations++;
       if(m_cache[ALINE][i].m_valid == true){
         if(m_cache[ALINE][i].m_tag == ATAG){
           m_hits++;
@@ -61,9 +65,8 @@ void Cache::cacheSim(){
   }//while loop
   std::cout << "Hits: " << m_hits << "\n";
   std::cout << "Misses:" << m_misses << "\n";
-  std::cout << "For Loop Iterations: " << iterations << "\n";
-  std::cout << "Counter: " << counter << "\n";
-  std::cout << "Hits/Entries: " << (m_hits/counter) << "\n";
+  std::cout << "Hits/Accesses: " << (m_hits/counter) << "\n";
+  std::cout << "Misses/Accesses: " << (m_misses/counter) << "\n";
 }
 
 void Cache::replacement(){
